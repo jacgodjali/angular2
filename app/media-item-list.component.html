@@ -1,0 +1,20 @@
+<header 
+    [ngClass]="{'medium-business':medium === 'Business', 'medium-relative':medium === 'Relative'}">
+    <h2>{{medium}}</h2>
+    <div>{{ mediaItems | categoryList }}</div>
+    
+</header>
+<section>
+  <mw-media-item
+    [ngClass]="{'medium-business':medium === 'Business', 'medium-relative':medium === 'Relative'}" 
+    *ngFor="let mediaItem of mediaItems"
+    [mediaItem]="mediaItem"
+    (delete)="onMediaItemDelete($event)"
+    (preview)="onMediaItemPreview($event)"></mw-media-item>
+    <mw-popup [media]="contact" (close)="onMediaItemClose()"></mw-popup>
+</section>
+<footer>
+  <a routerLink="/add">
+    <img src="media/01.png" class="icon" />
+  </a>
+</footer>
